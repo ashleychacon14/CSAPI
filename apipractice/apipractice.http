@@ -1,0 +1,27 @@
+@apipractice_HostAddress = http://localhost:5190
+
+GET {{apipractice_HostAddress}}/api/todo
+
+GET {{apipractice_HostAddress}}/api/todo/1
+
+POST {{apipractice_HostAddress}}/api/todo
+Content-Type: application/json
+
+{
+    "title": "Build my first API",
+    "isComplete": false
+}
+
+PUT {{apipractice_HostAddress}}/api/todo/1
+Content-Type: application/json
+
+{
+    "title": "Learn ASP.NET Core",
+    "isComplete": true
+}
+
+DELETE {{apipractice_HostAddress}}/api/todo/1
+
+Accept: application/json
+
+###
