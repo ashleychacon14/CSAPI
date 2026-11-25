@@ -1,9 +1,9 @@
 @apipractice_HostAddress = http://localhost:5190
 
 GET {{apipractice_HostAddress}}/api/todo
-
+###
 GET {{apipractice_HostAddress}}/api/todo/1
-
+###
 POST {{apipractice_HostAddress}}/api/todo
 Content-Type: application/json
 
@@ -11,7 +11,15 @@ Content-Type: application/json
     "title": "Build my first API",
     "isComplete": false
 }
+###
+POST {{apipractice_HostAddress}}/api/todo
+Content-Type: application/json
 
+{
+    "title": "Some random shit",
+    "isComplete": false
+}
+####
 PUT {{apipractice_HostAddress}}/api/todo/1
 Content-Type: application/json
 
@@ -20,7 +28,27 @@ Content-Type: application/json
     "isComplete": true
 }
 
+####
+PUT {{apipractice_HostAddress}}/api/todo
+Content-Type: application/json
+
+{
+    "title": "Be a baddie",
+    "isComplete": true
+}
+####
 DELETE {{apipractice_HostAddress}}/api/todo/1
+###
+GET {{apipractice_HostAddress}}/api/todo/search?title=API
+###
+
+GET {{apipractice_HostAddress}}/api/todo/search?title=Java
+###
+GET {{apipractice_HostAddress}}/api/todo/status?completed=true
+
+###
+GET {{apipractice_HostAddress}}/api/todo/status?completed=false
+###
 
 Accept: application/json
 

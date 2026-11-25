@@ -1,33 +1,30 @@
 using Microsoft.AspNetCore.Mvc;
 using apipractice.Models;
+using apipractice.Services;
 
 namespace apipractice.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TodoController: ControllerBase
+    public class TodoController : ControllerBase
     {
-        private static List<TodoItem> todos = new()
-        {
-            new TodoItem
-            {
-                Id = 1,
-                Title = "Learn C#",
-                isComplete=false
-            }
-        };
-        private static int nextId = 2;
+        private readonly ITodoService _todoService;
 
-        [HttpGet] //GET:
-        public ActionResult<List<TodoItem>> GetAll()
+        public TodoController(ITodoService todoService)
         {
-            return Ok(todos);
+            _todoService = todoService;
         }
 
-        [HttpGet("{id}")] //GET: 1
+        [HttpGet]
+        public ActionResult<List<TodoItem>> GetAll()
+        {
+            return Ok(_todoService.GetAll());
+        }
+
+        [HttpGet("{id}")]
         public ActionResult<TodoItem> GetById(int id)
         {
-            var todo = todos.FirstOrDefault(t => t.Id == id);
+            var todo = _todoService.GetById(id);
 
             if (todo == null)
                 return NotFound();
@@ -35,29 +32,46 @@ namespace apipractice.Controllers
             return Ok(todo);
         }
 
-        [HttpPost] // POST: api
+        [HttpGet("status")]
+        public ActionResult<List<TodoItem>> GetByStatus(
+            [FromQuery] bool completed)
+        {
+            Console.WriteLine($"Query string: {Request.QueryString}");
+            Console.WriteLine($"Controller received: {completed}");
+
+            var todos = _todoService.GetByStatus(completed);
+
+            return Ok(todos);
+        }
+
+        [HttpGet("search")]
+        public ActionResult<List<TodoItem>> Search(
+            [FromQuery] string title)
+        {
+            var todos = _todoService.GetByTitle(title);
+
+            return Ok(todos);
+        }
+
+        [HttpPost]
         public ActionResult<TodoItem> Create(TodoItem todo)
         {
-            todo.Id = nextId ++;
-            todos.Add(todo);
+            var createdTodo = _todoService.Create(todo);
 
             return CreatedAtAction(
                 nameof(GetById),
-                new { id = todo.Id},
-                todo
+                new { id = createdTodo.Id },
+                createdTodo
             );
         }
 
-        [HttpPut("{id}")] 
+        [HttpPut("{id}")]
         public IActionResult Update(int id, TodoItem updatedTodo)
         {
-            var todo = todos.FirstOrDefault(t => t.Id == id);
+            bool updated = _todoService.Update(id, updatedTodo);
 
-            if (todo == null)
+            if (!updated)
                 return NotFound();
-            
-            todo.Title = updatedTodo.Title;
-            todo.isComplete = updatedTodo.isComplete;
 
             return NoContent();
         }
@@ -65,15 +79,12 @@ namespace apipractice.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var todo = todos.FirstOrDefault(t => t.Id == id);
+            bool deleted = _todoService.Delete(id);
 
-            if (todo == null)
+            if (!deleted)
                 return NotFound();
-            
-            todos.Remove(todo);
 
             return NoContent();
         }
-
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ashleyc/apipractice/apipractice.csproj": {}
+    "/Users/ashleyc/CSAPI/apipractice/apipractice.csproj": {}
   },
   "projects": {
-    "/Users/ashleyc/apipractice/apipractice.csproj": {
+    "/Users/ashleyc/CSAPI/apipractice/apipractice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ashleyc/apipractice/apipractice.csproj",
+        "projectUniqueName": "/Users/ashleyc/CSAPI/apipractice/apipractice.csproj",
         "projectName": "apipractice",
-        "projectPath": "/Users/ashleyc/apipractice/apipractice.csproj",
+        "projectPath": "/Users/ashleyc/CSAPI/apipractice/apipractice.csproj",
         "packagesPath": "/Users/ashleyc/.nuget/packages/",
-        "outputPath": "/Users/ashleyc/apipractice/obj/",
+        "outputPath": "/Users/ashleyc/CSAPI/apipractice/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/ashleyc/.nuget/NuGet/NuGet.Config"

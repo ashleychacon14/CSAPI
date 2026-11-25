@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k4eRLIF3gGQ=",
+  "dgSpecHash": "gPnVcR8YOFQ=",
   "success": true,
-  "projectFilePath": "/Users/ashleyc/apipractice/apipractice.csproj",
+  "projectFilePath": "/Users/ashleyc/CSAPI/apipractice/apipractice.csproj",
   "expectedPackageFiles": [
     "/Users/ashleyc/.nuget/packages/microsoft.aspnetcore.openapi/10.0.3/microsoft.aspnetcore.openapi.10.0.3.nupkg.sha512",
     "/Users/ashleyc/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512"
@@ -12,9 +12,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
-      "projectPath": "/Users/ashleyc/apipractice/apipractice.csproj",
+      "projectPath": "/Users/ashleyc/CSAPI/apipractice/apipractice.csproj",
       "warningLevel": 1,
-      "filePath": "/Users/ashleyc/apipractice/apipractice.csproj",
+      "filePath": "/Users/ashleyc/CSAPI/apipractice/apipractice.csproj",
       "libraryId": "Microsoft.OpenApi",
       "targetGraphs": [
         "net10.0"
