@@ -21,7 +21,7 @@ namespace apipractice.Controllers
             return Ok(_todoService.GetAll());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public ActionResult<TodoItem> GetById(int id)
         {
             var todo = _todoService.GetById(id);
@@ -36,9 +36,6 @@ namespace apipractice.Controllers
         public ActionResult<List<TodoItem>> GetByStatus(
             [FromQuery] bool completed)
         {
-            Console.WriteLine($"Query string: {Request.QueryString}");
-            Console.WriteLine($"Controller received: {completed}");
-
             var todos = _todoService.GetByStatus(completed);
 
             return Ok(todos);
@@ -49,6 +46,17 @@ namespace apipractice.Controllers
             [FromQuery] string title)
         {
             var todos = _todoService.GetByTitle(title);
+
+            return Ok(todos);
+        }
+
+        [HttpGet("search/status")]
+        public ActionResult<List<TodoItem>> GetByTitleAndStatus(
+            [FromQuery] string title,
+            [FromQuery] bool completed)
+        {
+
+            var todos = _todoService.GetByTitleAndStatus(title, completed);
 
             return Ok(todos);
         }
@@ -65,7 +73,7 @@ namespace apipractice.Controllers
             );
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public IActionResult Update(int id, TodoItem updatedTodo)
         {
             bool updated = _todoService.Update(id, updatedTodo);
@@ -76,7 +84,7 @@ namespace apipractice.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public IActionResult Delete(int id)
         {
             bool deleted = _todoService.Delete(id);

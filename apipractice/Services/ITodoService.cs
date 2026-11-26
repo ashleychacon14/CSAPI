@@ -11,6 +11,8 @@ namespace apipractice.Services
         List<TodoItem> GetByTitle(string title);
 
         List<TodoItem> GetByStatus(bool completed);
+
+        List<TodoItem>GetByTitleAndStatus(string title, bool completed);
         
         TodoItem Create(TodoItem todo);
 

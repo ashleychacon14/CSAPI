@@ -37,17 +37,18 @@ namespace apipractice.Services
 
         public List<TodoItem> GetByStatus(bool completed)
         {
-            Console.WriteLine($"Searching for completed: {completed}");
-
-            foreach (var todo in todos)
-            {
-                Console.WriteLine(
-                    $"ID: {todo.Id}, Title: {todo.Title}, Status: {todo.isComplete}"
-                );
-            }
-
             return todos
                 .Where(t => t.isComplete == completed)
+                .ToList();
+        }
+
+        public List<TodoItem> GetByTitleAndStatus(string title, bool completed)
+        {
+            return todos
+                .Where(t => t.Title.Contains(
+                    title,
+                    StringComparison.OrdinalIgnoreCase) &&
+                    t.isComplete == completed)
                 .ToList();
         }
 

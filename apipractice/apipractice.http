@@ -29,11 +29,11 @@ Content-Type: application/json
 }
 
 ####
-PUT {{apipractice_HostAddress}}/api/todo
+POST {{apipractice_HostAddress}}/api/todo
 Content-Type: application/json
 
 {
-    "title": "Be a baddie",
+    "title": "Build my first API ; true test",
     "isComplete": true
 }
 ####
@@ -49,7 +49,10 @@ GET {{apipractice_HostAddress}}/api/todo/status?completed=true
 ###
 GET {{apipractice_HostAddress}}/api/todo/status?completed=false
 ###
-
+GET {{apipractice_HostAddress}}/api/todo/search/status?title=API&completed=false
+###
+GET {{apipractice_HostAddress}}/api/todo/search/status?title=API&completed=true
+###
 Accept: application/json
 
 ###
