@@ -16,9 +16,32 @@ namespace apipractice.Services
 
         private int nextId = 2;
 
-        public List<TodoItem> GetAll()
+        // public List<TodoItem> GetAll()
+        // {
+        //     return todos;
+        // }
+
+        public PagedResponse GetFew(int page, int pageSize)
         {
-            return todos;
+            int skip = (page - 1) * pageSize;
+            int curSize = todos.Count();
+            int totalPages = (int)Math.Ceiling((double)curSize / pageSize);
+
+            List<TodoItem> items = todos
+                .Skip(skip)
+                .Take(pageSize)
+                .ToList();
+
+            PagedResponse result = new PagedResponse
+            {
+                Items = items,
+                Page = page,
+                PageSize = pageSize,
+                TotalItems = curSize,
+                TotalPages = totalPages,
+            };
+
+            return result;
         }
 
         public TodoItem? GetById(int id)

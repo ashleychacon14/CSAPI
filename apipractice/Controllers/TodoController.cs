@@ -15,10 +15,20 @@ namespace apipractice.Controllers
             _todoService = todoService;
         }
 
+        // [HttpGet]
+        // public ActionResult<List<TodoItem>> GetAll()
+        // {
+        //     return Ok(_todoService.GetAll());
+        // }
+
         [HttpGet]
-        public ActionResult<List<TodoItem>> GetAll()
+        public ActionResult<PagedResponse> GetFew(int page=1, int pageSize=10)
         {
-            return Ok(_todoService.GetAll());
+            if ((page < 1) || (pageSize < 1) || (pageSize > 100))
+            {
+                return BadRequest("Invalid page or pageSize");
+            }
+            return Ok(_todoService.GetFew(page, pageSize));
         }
 
         [HttpGet("{id:int}")]

@@ -4,7 +4,9 @@ namespace apipractice.Services
 {
     public interface ITodoService
     {
-        List<TodoItem> GetAll();
+        // List<TodoItem> GetAll();
+
+        PagedResponse GetFew(int page, int pageSize);
 
         TodoItem? GetById(int id);
 

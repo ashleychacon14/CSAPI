@@ -11,14 +11,6 @@ Content-Type: application/json
     "title": "Build my first API",
     "isComplete": false
 }
-###
-POST {{apipractice_HostAddress}}/api/todo
-Content-Type: application/json
-
-{
-    "title": "Some random shit",
-    "isComplete": false
-}
 ####
 PUT {{apipractice_HostAddress}}/api/todo/1
 Content-Type: application/json
@@ -27,25 +19,46 @@ Content-Type: application/json
     "title": "Learn ASP.NET Core",
     "isComplete": true
 }
-
 ####
 POST {{apipractice_HostAddress}}/api/todo
 Content-Type: application/json
 
 {
-    "title": "Build my first API ; true test",
+    "title": "Build my first API",
     "isComplete": true
 }
 ####
+POST {{apipractice_HostAddress}}/api/todo
+Content-Type: application/json
+
+{
+    "title": "Test page function",
+    "isComplete": false
+}
+####
+POST {{apipractice_HostAddress}}/api/todo
+Content-Type: application/json
+
+{
+    "title": "Sucessfully post something",
+    "isComplete": true
+}
+###
+POST {{apipractice_HostAddress}}/api/todo
+Content-Type: application/json
+
+{
+    "title": "Play GTA VI",
+    "isComplete": true
+}
+###
 DELETE {{apipractice_HostAddress}}/api/todo/1
 ###
 GET {{apipractice_HostAddress}}/api/todo/search?title=API
 ###
-
 GET {{apipractice_HostAddress}}/api/todo/search?title=Java
 ###
 GET {{apipractice_HostAddress}}/api/todo/status?completed=true
-
 ###
 GET {{apipractice_HostAddress}}/api/todo/status?completed=false
 ###
@@ -53,6 +66,39 @@ GET {{apipractice_HostAddress}}/api/todo/search/status?title=API&completed=false
 ###
 GET {{apipractice_HostAddress}}/api/todo/search/status?title=API&completed=true
 ###
-Accept: application/json
+POST {{apipractice_HostAddress}}/api/todo
+Content-Type: application/json
 
+{
+    "title": "Learn model validation",
+    "isComplete": false
+}
+###
+POST {{apipractice_HostAddress}}/api/todo
+Content-Type: application/json
+
+{
+    "title": "",
+    "isComplete": false
+}
+###
+POST {{apipractice_HostAddress}}/api/todo
+Content-Type: application/json
+
+{
+    "isComplete": false
+}
+###
+GET {{apipractice_HostAddress}}/api/todo?page=1&pageSize=5
+
+### 
+GET {{apipractice_HostAddress}}/api/todo?page=2&pageSize=5
+
+###
+GET {{apipractice_HostAddress}}/api/todo?page=0&pageSize=5
+
+###
+GET {{apipractice_HostAddress}}/api/todo?page=1&pageSize=101
+###
+Accept: application/json
 ###
