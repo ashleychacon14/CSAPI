@@ -97,6 +97,24 @@ namespace apipractice.Services
             return true;
         }
 
+        public bool Patch(int id,  TodoPatchRequest updatedReq)
+        {
+            var todo = GetById(id);
+            if (todo == null)
+            {
+                return false;
+            }
+            if (updatedReq.Title != null)
+            {
+                todo.Title = updatedReq.Title;
+            }
+            if (updatedReq.IsComplete != null)
+            {
+                todo.isComplete = updatedReq.IsComplete.Value;
+            }
+            return true;
+        }
+
         public bool Delete(int id)
         {
             var todo = GetById(id);

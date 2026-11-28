@@ -20,6 +20,8 @@ namespace apipractice.Services
 
         bool Update(int id, TodoItem updatedTodo);
 
+        bool Patch(int id, TodoPatchRequest updatedReq);
+
         bool Delete(int id);
     }
 }

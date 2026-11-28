@@ -94,6 +94,16 @@ namespace apipractice.Controllers
             return NoContent();
         }
 
+        [HttpPatch("{id:int}")]
+        public IActionResult Patch(int id,  TodoPatchRequest updatedReq)
+        {
+            bool updated = _todoService.Patch(id, updatedReq);
+            if (!updated)
+                return NotFound();
+
+            return NoContent();
+        }
+
         [HttpDelete("{id:int}")]
         public IActionResult Delete(int id)
         {

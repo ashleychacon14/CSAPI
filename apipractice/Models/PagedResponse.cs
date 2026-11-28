@@ -1,5 +1,3 @@
-using apipractice.Models;
-
 namespace apipractice.Models
 {
     public class PagedResponse

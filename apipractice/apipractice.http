@@ -100,5 +100,41 @@ GET {{apipractice_HostAddress}}/api/todo?page=0&pageSize=5
 ###
 GET {{apipractice_HostAddress}}/api/todo?page=1&pageSize=101
 ###
+PATCH {{apipractice_HostAddress}}/api/todo/1
+Content-Type: application/json
+
+{
+    "title": "Learn ASP.NET Core"
+}
+###
+PATCH {{apipractice_HostAddress}}/api/todo/1
+Content-Type: application/json
+
+{
+    "isComplete": true
+}
+###
+PATCH {{apipractice_HostAddress}}/api/todo/1
+Content-Type: application/json
+
+{
+    "isComplete": false
+}
+###
+PATCH {{apipractice_HostAddress}}/api/todo/1
+Content-Type: application/json
+
+{
+    "title": "Practice C# REST APIs",
+    "isComplete": true
+}
+###
+PATCH {{apipractice_HostAddress}}/api/todo/999
+Content-Type: application/json
+
+{
+    "title": "Testing out of bounds edge case"
+}
+###
 Accept: application/json
 ###
